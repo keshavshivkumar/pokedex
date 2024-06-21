@@ -1,0 +1,20 @@
+body {
+    text-align: center;
+}
+
+#heading {
+  padding: 20px;
+  margin: 10px;
+}
+
+#heading img {
+  height: 100px;
+  width: 280px;
+}
+
+#pokeball {
+  width: 32px;
+  height: 32px;
+  -webkit-filter: invert(1);
+  filter: invert(1);
+}

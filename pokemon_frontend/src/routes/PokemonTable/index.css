@@ -1,0 +1,95 @@
+#pokemon-types span {
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: inset 1px 2px 5px azure;
+}
+
+#grass span {
+  background-color: green;
+  color:azure;
+}
+
+#poison span {
+  background-color: purple;
+  color:azure;
+}
+
+#fire span {
+  background-color: orangered;
+  color:azure;
+}
+
+#water span {
+  background-color: aqua;
+  color:rgb(44, 44, 44);
+}
+
+#flying span {
+  background-color: skyblue;
+  color:azure;
+}
+
+#bug span {
+  background-color: #eaff00;
+  color: rgb(44, 44, 44);
+}
+
+#normal span {
+  background-color: lightgrey;
+  color: rgb(44, 44, 44);
+}
+
+#dark span {
+  background-color: rgb(66, 66, 66);
+  color: azure;
+}
+
+#electric span {
+  background-color: rgb(255, 221, 0);
+  color: rgb(44, 44, 44);
+}
+
+#ground span {
+  background-color: chocolate;
+  color: azure;
+}
+
+#rock span {
+  background-color: brown;
+  color: azure;
+}
+
+#ice span {
+  background-color: lightskyblue;
+  color: azure;
+}
+
+#fairy span {
+  background-color: lightpink;
+  color: rgb(44, 44, 44);
+}
+
+#dragon span {
+  background-color: lightseagreen;
+  color: azure;
+}
+
+#fighting span {
+  background-color: lightcoral;
+  color: azure;
+}
+
+#psychic span {
+  background-color: mediumorchid;
+  color: azure;
+}
+
+#ghost span {
+  background-color: mediumpurple;
+  color: azure;
+}
+
+#steel span {
+  background-color: slategrey;
+  color: azure;
+}
