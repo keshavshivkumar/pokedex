@@ -1,8 +1,12 @@
-from .models import Pokemon
+from .models import Pokemon, PokemonStats
 from rest_framework import serializers
 
 class PokemonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pokemon
-        fields = ['pokedex_id', 'name', 'percentage_male', 'type1', 'type2', 'height', 'weight', 'abilities', 
-                  'capture_rate', 'generation', 'is_legendary', 'category']
+        fields = '__all__'
+
+class PokemonStatsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PokemonStats
+        fields = '__all__'

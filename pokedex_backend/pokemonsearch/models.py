@@ -24,3 +24,22 @@ class Pokemon(models.Model):
     class Meta:
         managed = False
         db_table = 'pokemon'
+        verbose_name = 'Pokemon'
+        verbose_name_plural = 'Pokemon'
+
+class PokemonStats(models.Model):
+    pokedex_id = models.IntegerField(primary_key=True)
+    hp=models.IntegerField()
+    attack=models.IntegerField()
+    defense=models.IntegerField()
+    sp_attack=models.IntegerField()
+    sp_defense=models.IntegerField()
+    speed=models.IntegerField()
+    base_total=models.IntegerField()
+    base_happiness=models.IntegerField()
+    exp_growth=models.IntegerField()
+
+    class Meta:
+        db_table = 'pokestats'
+        verbose_name = 'Pokemon Stat'
+        verbose_name_plural = 'Pokemon Stats'
