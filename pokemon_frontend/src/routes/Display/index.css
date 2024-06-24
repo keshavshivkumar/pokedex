@@ -1,4 +1,6 @@
 #pokemon-types span {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+  font-weight: lighter;
   padding: 3px;
   border-radius: 5px;
   box-shadow: inset 1px 2px 5px azure;

@@ -1,15 +1,18 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { Alert, Backdrop, Box, CircularProgress, TextField, InputAdornment } from '@mui/material';
+import { useCallback, useEffect, useState } from 'react';
+import { Alert, Backdrop, Box, CircularProgress } from '@mui/material';
 import './index.css';
-import PokemonTable from '../PokemonTable'
 import axios from 'axios';
 import { PokemonData } from '../../context/pokemonData';
+import Display from '../Display';
+import SearchContainer from '../Display/SearchContainer';
 
 const Home = () => {
     const baseUrl = 'http://localhost:8000/api/';
     const [pokemonData, setPokemonData] = useState<Array<PokemonData>>([]);
-    const [searchText, setSearchText] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
+    const [searchText, setSearchText] = useState<string>('');
+    const [isList, setIsList] = useState<boolean>(true);
+
 
     const fetchData = useCallback(async () => {
         try {
@@ -50,32 +53,8 @@ const Home = () => {
         }
         {pokemonData.length > 0 || loading ? (
             <Box id="container">
-            <Box id="search-container">
-                <TextField 
-                    id="search-input" 
-                    variant="outlined" 
-                    label="Enter Pokemon Name or ID" 
-                    value={searchText} 
-                    InputProps={{
-                        startAdornment: (
-                        <InputAdornment position="start">
-                            <img id='pokeball' alt='pokeball icon' src='./pokeball.png' />
-                        </InputAdornment>
-                        ),
-                    }}
-                    onChange={event => setSearchText(event.target.value)} 
-                    sx={{
-                        width: '50%',
-                        '& .MuiInputBase-root': {
-                        padding: '2px',
-                        margin: '10px',
-                        },
-                    }}
-                />
-            </Box>
-            <Box style={{ width: "60%", margin: "auto" }}>
-                <PokemonTable pokemonData={filtered} />
-            </Box>
+                <SearchContainer searchText={searchText} setSearchText={setSearchText} isList={isList} setIsList={setIsList}/>
+                <Display pokemonData={filtered} isList={isList} />
             </Box>
         ) : (
             <Box id="empty-container">

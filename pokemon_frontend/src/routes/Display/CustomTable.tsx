@@ -14,7 +14,7 @@ import { PokemonData } from '../../context/pokemonData';
 import Pagination from './Pagination';
 import { TableFooter } from '@mui/material';
 
-interface PokemonTableProps {
+interface PokemonDataProps {
   pokemonData: Array<PokemonData>
 }
 
@@ -38,7 +38,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-const PokemonTable = (props: PokemonTableProps) => {
+const CustomTable = (props: PokemonDataProps) => {
   const {pokemonData} = props;
   const rows = pokemonData.map((pokemon) => (
     {
@@ -99,11 +99,11 @@ const PokemonTable = (props: PokemonTableProps) => {
               <StyledTableCell align='center'>
                 <Box id="pokemon-types">
                   <Box id={row.type[0]} display={'flex'} justifyContent={'center'} margin={3/4}>
-                    <span>{row.type[0]}</span>
+                    <span>{row.type[0].toUpperCase()}</span>
                   </Box>
                   {row.type[1] !== '-' && 
                     <Box id={row.type[1]} display={'flex'} justifyContent={'center'} margin={`${row.type[1]==='-' ? 1 : 1/3}`}>
-                      <span>{row.type[1]}</span>
+                      <span>{row.type[1].toUpperCase()}</span>
                     </Box>
                   }
                 </Box>
@@ -143,4 +143,4 @@ const PokemonTable = (props: PokemonTableProps) => {
   )
 } 
 
-export default PokemonTable;
+export default CustomTable;
