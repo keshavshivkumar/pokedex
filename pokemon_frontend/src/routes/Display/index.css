@@ -95,3 +95,7 @@
   background-color: slategrey;
   color: azure;
 }
+
+#pokemon-link {
+  text-decoration: none;
+}

@@ -1,10 +1,39 @@
 body {
     text-align: center;
+    background: repeating-linear-gradient(
+      90deg,
+      rgb(235, 235, 235),
+      rgb(235, 235, 235) 20px,
+      rgb(255, 255, 255) 10px,
+      rgb(255, 255, 255) 30px
+    )
 }
 
 #heading {
   padding: 20px;
-  margin: 10px;
+  background-color: rgb(182, 0, 0);
+}
+
+#hr-line {
+  width: 100%;
+  padding: 10px;
+  margin: 0px;
+  background-color: black;
+  border: none;
+}
+
+#logo {
+  width: 20%;
+  margin: auto;
+  background: repeating-linear-gradient(
+    135deg,
+    rgb(182, 0, 0) 10px,
+    rgb(150, 0, 0) 20px,
+    rgb(150, 0, 0) 20px,
+    red 10px
+  );
+  border-radius: 10px;
+  box-shadow: onset 1px 2px 5px azure;
 }
 
 #heading img {
@@ -15,6 +44,6 @@ body {
 #pokeball {
   width: 32px;
   height: 32px;
-  -webkit-filter: invert(1);
-  filter: invert(1);
+  /* -webkit-filter: invert(1);
+  filter: invert(1); */
 }

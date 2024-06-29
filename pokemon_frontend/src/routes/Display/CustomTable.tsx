@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 import { styled } from '@mui/material/styles';
+import { Link } from '@mui/material';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import {TablePagination} from '@mui/material';
@@ -20,7 +21,6 @@ interface PokemonDataProps {
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    color: theme.palette.common.white,
     fontWeight: 'fontWeightMedium',
   },
   [`&.${tableCellClasses.body}`]: {
@@ -76,7 +76,10 @@ const CustomTable = (props: PokemonDataProps) => {
 
   return (
     <TableContainer component={Paper}>
-      <Table>
+      <Table sx={{
+        backgroundColor: 'grey',
+        backdropFilter: 'blur(5px) brightness(80%)',
+      }}>
         <TableHead>
           <TableRow>
             <StyledTableCell>ID</StyledTableCell>
@@ -94,8 +97,13 @@ const CustomTable = (props: PokemonDataProps) => {
           ).map((row) => (
             <StyledTableRow key={row.id}>
               <StyledTableCell>{row.id}</StyledTableCell>
-              <StyledTableCell><img src={row.sprite[0]} alt={row.sprite[1]} /></StyledTableCell>
-              <StyledTableCell align='center'>{row.name}</StyledTableCell>
+                <StyledTableCell>
+                  <Link id="pokemon-link" href={`/pokemon/${parseInt(row.id.slice(1, )).toString()}`}>
+                  <img src={row.sprite[0]} alt={row.sprite[1]} /></Link>
+                </StyledTableCell>
+                <StyledTableCell align='center'>
+                  <Link id="pokemon-link" href={`/pokemon/${parseInt(row.id.slice(1, )).toString()}`}>{row.name}</Link>
+                </StyledTableCell>
               <StyledTableCell align='center'>
                 <Box id="pokemon-types">
                   <Box id={row.type[0]} display={'flex'} justifyContent={'center'} margin={3/4}>

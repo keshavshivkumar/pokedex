@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import { Typography, Card, CardContent, CardMedia, Box } from '@mui/material';
+import { Link, Typography, Card, CardContent, CardMedia, Box } from '@mui/material';
 import { PokemonData } from '../../context/pokemonData';
 import { useInView } from 'react-intersection-observer';
 
@@ -23,14 +23,16 @@ const CustomGrid = (props: PokemonDataProps) => {
     }, [inView]);
 
     return (
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
         {
             pokemonData.slice(0, visibleCount).map((pokemon, index) => (
                 <Grid xs={4} key={`${pokemon.pokedex_id}`}>
                     <Card id={`${pokemon.pokedex_id}`}>
+                        <Link id="pokemon-link" href={`/pokemon/${pokemon.pokedex_id}`}>
                         <CardMedia
-                            sx={{height: 300}}
-                            image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.pokedex_id}.png`} />
+                                sx={{height: 300, backgroundColor: 'grey'}}
+                                image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.pokedex_id}.png`} />
+                        </Link>
                         <CardContent>
                             <Box display="flex" justifyContent="space-between">
                                 <Typography color="textSecondary">
@@ -42,7 +44,7 @@ const CustomGrid = (props: PokemonDataProps) => {
                                 </Typography>
                                 <Typography color="textSecondary">{pokemon.generation}</Typography>
                             </Box>
-                            <Typography variant="h5" component="div">{pokemon.name}</Typography>
+                            <Typography variant="h5" component="div"><Link id="pokemon-link" href={`/pokemon/${pokemon.pokedex_id}`}>{pokemon.name}</Link></Typography>
                         </CardContent>
                     </Card>
                     {index === visibleCount - 1 && <div ref={ref} />}
