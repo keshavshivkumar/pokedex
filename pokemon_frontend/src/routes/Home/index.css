@@ -14,14 +14,6 @@ body {
   background-color: rgb(182, 0, 0);
 }
 
-#hr-line {
-  width: 100%;
-  padding: 10px;
-  margin: 0px;
-  background-color: black;
-  border: none;
-}
-
 #logo {
   width: 20%;
   margin: auto;

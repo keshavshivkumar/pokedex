@@ -1,0 +1,107 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.container {
+  display: grid;
+  color: black;
+  width: 80%;
+  grid-template-areas:
+    "sprite id-name gen"
+    "sprite type abilities"
+    "sprite height-weight male"
+    "secondary-sprite stats stats";
+  grid-template-columns: 1fr 2fr 2fr;
+  gap: 20px;
+  padding: 20px;
+  margin: auto;
+  backdrop-filter: blur(5px) brightness(80%);
+}
+
+#pokemon-sprite {
+  grid-area: sprite;
+  width: 100%;
+  justify-self: start; 
+}
+
+.secondary-sprite {
+  grid-area: secondary-sprite;
+  width: 100%;
+  justify-self: start; 
+}
+
+.pokemon-id-name {
+  grid-area: id-name;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pokemon-gen {
+  grid-area: gen;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.pokemon-type {
+  grid-area: type;
+  display: flex;
+  align-items: center;
+}
+
+.pokemon-abilities {
+  grid-area: abilities;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.pokemon-height-weight {
+  grid-area: height-weight;
+  display: flex;
+  align-items: center;
+}
+
+.pokemon-male {
+  grid-area: male;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.pokemon-stats {
+  grid-area: stats;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemon-stats > * {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  border-style: outset;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#pokemon-name {
+  font-weight: bolder;
+  font-size: 2em;
+}
+
+#pokemon-id #pokemon-gen, #pokemon-types, #pokemon-category, #pokemon-abilities, #pokemon-height, #pokemon-weight {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#pokemon-hp, #pokemon-atk, #pokemon-def, #pokemon-spa, #pokemon-spd, #pokemon-speed {
+  font-weight: bold;
+  font-size: 1em;
+}

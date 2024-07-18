@@ -5,6 +5,7 @@ import { PokemonStats } from "../../context/pokemonStats"
 import axios from "axios"
 import { Box } from "@mui/material"
 import Header from "../Home/Header"
+import './index.css'
 
 const Pokemon = () => {
     const baseUrl = 'http://localhost:8000/api';
@@ -16,7 +17,6 @@ const Pokemon = () => {
         if (!pokedex_id) return;
         try {
             const response = await axios.get(`${baseUrl}/${pokedex_id}`)
-            console.log(response.data);
 
             if (response.data) {
                 const [data] = response.data;
@@ -31,8 +31,6 @@ const Pokemon = () => {
         if (!pokedex_id) return;
         try {
             const response = await axios.get(`${baseUrl}/stats/${pokedex_id}`)
-            console.log(response.data);
-
             if (response.data) {
                 const [data] = response.data;
                 setPokemonStats(data);
@@ -47,28 +45,57 @@ const Pokemon = () => {
 
     return (
         <>
-        <Header />
-            <Box id='container' sx={{width:'60%', display:'inline-block'}}>
-                <Box id={'pokemon-sprite'} component='img' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedex_id}.png`}></Box>
+            <Header />
+            <Box className='container'>
+                <Box
+                id='pokemon-sprite'
+                component='img'
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedex_id}.png`}
+                />
                 {pokemonData && (
-                    <Box id='pokemon-details' sx={{float:"left"}}>
-                        <Box id={'pokemon-id'}>ID: {pokedex_id}</Box>
-                        <Box id={'pokemon-name'}>Name: {pokemonData.name}</Box>
-                        <Box id={'pokemon-type1'}>Type1: {pokemonData.type1}</Box>
-                        <Box id={'pokemon-type2'}>Type2: {pokemonData.type2}</Box>
-                        <Box id={'pokemon-gen'}>Gen: {pokemonData.generation}</Box>
-                        <Box id={'pokemon-male'}>Male%: {pokemonData.percentage_male}</Box>
+                <>
+                    <Box className='pokemon-id-name'>
+                    <Box id='pokemon-id'>ID: {pokedex_id}</Box>
+                    <Box id='pokemon-name'>{pokemonData.name}</Box>
                     </Box>
+                    <Box className='pokemon-gen'>Gen: {pokemonData.generation}</Box>
+                    <Box className='pokemon-type'>
+                    <Box id='pokemon-type1'>
+                        {pokemonData.type2 !== '-' ? 'Type1: ' : 'Type: '}
+                        {pokemonData.type1}
+                    </Box>
+                    {pokemonData.type2 !== '-' && (
+                        <Box id='pokemon-type2'>&emsp;Type2: {pokemonData.type2}</Box>
+                    )}
+                    </Box>
+                    <Box className='pokemon-abilities'>
+                    Abilities: {JSON.parse(pokemonData.abilities.replace(/'/g, '"')).join(', ')}
+                    </Box>
+                    <Box className='pokemon-height-weight'>
+                    <Box id='pokemon-height'>Height: {pokemonData.height}</Box>&emsp;
+                    <Box id='pokemon-weight'>Weight: {pokemonData.weight}</Box>
+                    </Box>
+                    <Box className='pokemon-male'>Male Percentage: {pokemonData.percentage_male}%</Box>
+                </>
                 )}
+                <Box className='secondary-sprite'>
+                <Box
+                    component='img'
+                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedex_id}.png`}
+                    onMouseOver={e=>{e.currentTarget.src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokedex_id}.png`}}
+                    onMouseOut={e=>{e.currentTarget.src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedex_id}.png`}}
+                    onClick={e=>{e.currentTarget.src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedex_id}.png`}}
+                />
+                </Box>
                 {pokemonStats && (
-                    <Box id='pokemon-stats' sx={{float:"right"}}>
-                        <Box id={'pokemon-hp'}>{pokemonStats.hp}</Box>
-                        <Box id={'pokemon-atk'}>{pokemonStats.attack}</Box>
-                        <Box id={'pokemon-def'}>{pokemonStats.defense}</Box>
-                        <Box id={'pokemon-spa'}>{pokemonStats.sp_attack}</Box>
-                        <Box id={'pokemon-spd'}>{pokemonStats.sp_defense}</Box>
-                        <Box id={'pokemon-speed'}>{pokemonStats.speed}</Box>
-                    </Box>
+                <Box className='pokemon-stats'>
+                    <Box id='pokemon-hp'>HP: {pokemonStats.hp}</Box>
+                    <Box id='pokemon-atk'>Atk: {pokemonStats.attack}</Box>
+                    <Box id='pokemon-def'>Def: {pokemonStats.defense}</Box>
+                    <Box id='pokemon-spa'>Sp. Atk: {pokemonStats.sp_attack}</Box>
+                    <Box id='pokemon-spd'>Sp. Def: {pokemonStats.sp_defense}</Box>
+                    <Box id='pokemon-speed'>Speed: {pokemonStats.speed}</Box>
+                </Box>
                 )}
             </Box>
         </>
